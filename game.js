@@ -35,6 +35,13 @@ function getValidWordFromUser(round) {
 
     // if user entered nothingand just pressed enter, or provided unvalid moves
     if (!userInput || !validMoves.includes(userInput)) {
+      console.log(
+        `Oops you made a mistake, ${
+          !userInput
+            ? "please type something, we can't accept void"
+            : "you typed " + userInput
+        },it is an invalid input`
+      );
       alert(
         "A little focus here (-___-)! Please enter only valid moves (rock, paper, scissors)."
       );
@@ -54,7 +61,8 @@ function game() {
   console.log(
     "***************************************************************************"
   );
-
+  let userScore = 0;
+  let computerScroe = 0;
   for (let i = 1; i <= maxRounds; i++) {
     const compSelect = getComputerSelection();
 
@@ -71,25 +79,28 @@ function game() {
 
     switch (result) {
       case -1:
+        computerScroe++;
         console.log(`You Lose, ${compSelect} beats ${validUserInput}`);
         break;
       case 0:
         console.log("it's a tie");
         break;
       case 1:
+        userScore++;
         console.log(
           `Congratulations! You win! ${validUserInput} beats ${compSelect}`
         );
-        return;
-    }
-
-    // if it's the final round and the user lost, we should just go sleep lol
-    if (i == 5 && !result) {
-      console.log(
-        "The world is doomed, Villain computer will take over now, Rest in peace yall"
-      );
+        break;
     }
   }
+  if (computerScroe < userScore)
+    console.log(
+      `You scored: ${userScore}, while villain AI scored ${computerScroe} \nThe world is saved, let's have some free food`
+    );
+  else
+    console.log(
+      `You scored: ${userScore}, while villain AI scored ${computerScroe} \nThe world is doomed, Villain computer will take over now, Rest in peace yall`
+    );
 }
 
 let startGameBtn = document.querySelector(".startGame");
