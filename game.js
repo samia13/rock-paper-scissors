@@ -105,5 +105,8 @@ function game() {
 
 let startGameBtn = document.querySelector(".startGame");
 
-startGameBtn.addEventListener("click", game);
+startGameBtn.addEventListener("click", () => {
+  console.clear();
+  game();
+});
 // game();
