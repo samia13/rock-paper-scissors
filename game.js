@@ -8,17 +8,20 @@ function getComputerSelection() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  // "0" represents tie, "1" represents win, "-1" represents lost
-  if (
-    (playerSelection == "rock" && computerSelection == "scissors") ||
-    (playerSelection == "paper" && computerSelection == "rock") ||
-    (playerSelection == "scissors" && computerSelection == "paper")
-  ) {
-    return 1;
-  } else if (playerSelection === computerSelection) {
-    return 0;
+  // winConditions represents win cases,
+  // where the obj key refers to move and value refers to what the move beats
+  const winConditions = {
+    rock: "scissors",
+    paper: "rock",
+    scissors: "paper",
+  };
+
+  if (playerSelection === computerSelection) {
+    return 0; // Tie
+  } else if (winConditions[playerSelection] === computerSelection) {
+    return 1; // Win
   } else {
-    return -1;
+    return -1; // Loss
   }
 }
 
@@ -87,18 +90,16 @@ Good Luck!
     }
   }
 
-  let finalResultMessage;
-  if (computerScore < userScore) {
-    finalResultMessage = `>> Congratulations,the world is saved, let's have some free food`;
-  } else if (computerScore === userScore) {
-    finalResultMessage = `>> It's a tie, Let's give it another try`;
-  } else {
-    finalResultMessage = `>> You lost, Villain computer will take over now, Rest in peace yall`;
-  }
+  const finalResultMessage =
+    computerScore < userScore
+      ? ">> Congratulations, the world is saved, let's have some free food"
+      : computerScore === userScore
+      ? ">> It's a tie, Let's give it another try"
+      : ">> You lost, Villain computer will take over now, Rest in peace y'all";
 
   console.log(
     `%cFinal Result: You ${userScore} - ${computerScore} villain AI.\n ${finalResultMessage}`,
-    "color: blue; font-size:17px"
+    "color: blue; font-size: 17px"
   );
 }
 
