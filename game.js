@@ -8,6 +8,7 @@ function getComputerSelection() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  // "0" represents tie, "1" represents win, "-1" represents lost
   if (
     (playerSelection == "rock" && computerSelection == "scissors") ||
     (playerSelection == "paper" && computerSelection == "rock") ||
@@ -35,7 +36,9 @@ function getValidWordFromUser(round) {
     userInput = userInput.trim().toLowerCase();
 
     if (!validMoves.includes(userInput)) {
-      console.log(`Invalid input: "${userInput}". Please enter a valid move.`);
+      console.log(
+        `Invalid input: "${userInput}". Please enter a valid move (rock, paper, scissors).`
+      );
     }
   } while (!validMoves.includes(userInput));
 
@@ -47,8 +50,9 @@ function game() {
   console.log(`
 ***************************************************************************
 Welcome to the rock, paper, scissors game!
-You have 5 rounds to win the game. Good Luck!
+You have 5 rounds to win the game. 
 To quit, press the prompt cancel button or type "quit".
+Good Luck!
 ***************************************************************************
 `);
 
@@ -83,19 +87,19 @@ To quit, press the prompt cancel button or type "quit".
     }
   }
 
+  let finalResultMessage;
   if (computerScore < userScore) {
-    console.log(
-      `>> You scored: ${userScore}, while the villain AI scored ${computerScore}. The world is saved, let's have some free food`
-    );
+    finalResultMessage = `>> Congratulations,the world is saved, let's have some free food`;
   } else if (computerScore === userScore) {
-    console.log(
-      `>> You scored: ${userScore}, same as the villain AI scored ${computerScore}. Let's give it another try`
-    );
+    finalResultMessage = `>> You scored: ${userScore}, same as the villain AI scored ${computerScore}.\n Let's give it another try`;
   } else {
-    console.log(
-      `>> You scored: ${userScore}, while the villain AI scored ${computerScore}. The world is doomed, Villain computer will take over now, Rest in peace yall`
-    );
+    finalResultMessage = `>> You scored: ${userScore}, while the villain AI scored ${computerScore}.\n The world is doomed, Villain computer will take over now, Rest in peace yall`;
   }
+
+  console.log(
+    `%cFinal Result: You ${userScore} - ${computerScore} villain AI.\n ${finalResultMessage}`,
+    "color: blue; font-size:17px"
+  );
 }
 
 let startGameBtn = document.querySelector(".startGame");

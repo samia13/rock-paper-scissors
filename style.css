@@ -1,7 +1,10 @@
 body {
+  font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
   background-color: aliceblue;
   display: flex;
+  flex-direction: column;
+  gap: 30px;
   justify-content: center;
   align-items: center;
 }
@@ -13,4 +16,18 @@ button {
   border: 1px solid #2602bf;
   border-radius: 8px;
   outline: 0;
+}
+
+.note {
+  position: absolute;
+  top: 0;
+  margin: 10px;
+  padding: 10px 20px;
+  background: #f1e60c61;
+  color: gray;
+  font-size: 19px;
+  border-radius: 10px;
+}
+p {
+  font-size: 19px;
 }
