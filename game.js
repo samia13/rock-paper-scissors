@@ -91,9 +91,9 @@ Good Luck!
   if (computerScore < userScore) {
     finalResultMessage = `>> Congratulations,the world is saved, let's have some free food`;
   } else if (computerScore === userScore) {
-    finalResultMessage = `>> You scored: ${userScore}, same as the villain AI scored ${computerScore}.\n Let's give it another try`;
+    finalResultMessage = `>> It's a tie, Let's give it another try`;
   } else {
-    finalResultMessage = `>> You scored: ${userScore}, while the villain AI scored ${computerScore}.\n The world is doomed, Villain computer will take over now, Rest in peace yall`;
+    finalResultMessage = `>> You lost, Villain computer will take over now, Rest in peace yall`;
   }
 
   console.log(
