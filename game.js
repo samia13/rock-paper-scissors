@@ -48,15 +48,31 @@ function getValidWordFromUser(round) {
   return userInput;
 }
 
+function logFinalScore(userScore, computerScore) {
+  const finalResultMessage =
+    computerScore < userScore
+      ? ">> Congratulations, the world is saved, let's have some free food"
+      : computerScore === userScore
+      ? ">> It's a tie, Let's give it another try"
+      : ">> You lost, Villain computer will take over now, Rest in peace y'all";
+
+  console.log(
+    `%cFinal Result: You ${userScore} - ${computerScore} villain AI.\n ${finalResultMessage}`,
+    "color: blue; font-size: 17px"
+  );
+}
+
 function game() {
   console.clear();
   alert(`Welcome to Rock, Paper, Scissors game, where our dear friend needs your help! \n
   Villain computer took over and imprisoned our fellow developer\n
   we count on you to save him, and the world, You have 5 rounds in Total\n
   Do us proud!`);
-  console.log(`
 
-`);
+  alert(`Please Open Developer tools before starting the game
+  \nFor windows users press Ctrl + Shift + I
+  \nFor Mac press Command + Option + I
+  \nOr right click and inspect`);
 
   let userScore = 0;
   let computerScore = 0;
@@ -88,18 +104,7 @@ function game() {
         break;
     }
   }
-
-  const finalResultMessage =
-    computerScore < userScore
-      ? ">> Congratulations, the world is saved, let's have some free food"
-      : computerScore === userScore
-      ? ">> It's a tie, Let's give it another try"
-      : ">> You lost, Villain computer will take over now, Rest in peace y'all";
-
-  console.log(
-    `%cFinal Result: You ${userScore} - ${computerScore} villain AI.\n ${finalResultMessage}`,
-    "color: blue; font-size: 17px"
-  );
+  logFinalScore(userScore, computerScore);
 }
 
 game();
