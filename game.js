@@ -33,7 +33,9 @@ function getValidWordFromUser(round) {
     );
 
     if (userInput === "quit" || userInput === null) {
-      return "quit";
+      let message = confirm("Are you sure you want to quit?");
+      if (message) return "quit";
+      else continue;
     }
 
     userInput = userInput.trim().toLowerCase();
