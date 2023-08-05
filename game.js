@@ -50,13 +50,12 @@ function getValidWordFromUser(round) {
 
 function game() {
   console.clear();
+  alert(`Welcome to Rock, Paper, Scissors game, where our dear friend needs your help! \n
+  Villain computer took over and imprisoned our fellow developer\n
+  we count on you to save him, and the world, You have 5 rounds in Total\n
+  Do us proud!`);
   console.log(`
-***************************************************************************
-Welcome to the rock, paper, scissors game!
-You have 5 rounds to win the game. 
-To quit, press the prompt cancel button or type "quit".
-Good Luck!
-***************************************************************************
+
 `);
 
   let userScore = 0;
@@ -103,5 +102,4 @@ Good Luck!
   );
 }
 
-let startGameBtn = document.querySelector(".startGame");
-startGameBtn.addEventListener("click", game);
+game();
